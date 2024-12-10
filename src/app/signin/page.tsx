@@ -105,7 +105,7 @@ const SignInForm: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-2/4 right-3 transform -translate-y-1/10 text-gray-600"
+                className="absolute top-8 right-3  text-gray-600 hover:text-gray-800 focus:outline-none transition-colors duration-200"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
