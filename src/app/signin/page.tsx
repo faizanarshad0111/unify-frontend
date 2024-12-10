@@ -53,7 +53,6 @@ const SignInForm: React.FC = () => {
         </h2>
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
           <form onSubmit={formik.handleSubmit}>
-            {/* Email Field */}
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -81,7 +80,6 @@ const SignInForm: React.FC = () => {
               )}
             </div>
 
-            {/* Password Field */}
             <div className="mb-4 relative">
               <label
                 htmlFor="password"
@@ -121,7 +119,6 @@ const SignInForm: React.FC = () => {
               )}
             </div>
 
-            {/* Remember Me and Forgot Password */}
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
                 <input
@@ -144,7 +141,6 @@ const SignInForm: React.FC = () => {
               </Link>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
@@ -153,14 +149,12 @@ const SignInForm: React.FC = () => {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="flex items-center my-4">
             <hr className="flex-grow border-gray-300" />
             <span className="mx-2 text-gray-500">OR</span>
             <hr className="flex-grow border-gray-300" />
           </div>
 
-          {/* Google Sign-In */}
           <button
             type="button"
             className="w-full py-2 px-4 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100"
@@ -174,7 +168,6 @@ const SignInForm: React.FC = () => {
             <span className="ml-2">Continue with Google</span>
           </button>
 
-          {/* Sign Up Link */}
           <p className="text-center text-sm text-gray-600 mt-4">
             Don't have an account?{" "}
             <Link href="/signup" className="text-red-500 hover:underline">

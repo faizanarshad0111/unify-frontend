@@ -55,13 +55,7 @@ const SignUpForm: React.FC = () => {
           Sign Up
         </h2>
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
-          {/* Logo */}
-
-          {/* Heading */}
-
-          {/* Form */}
           <form onSubmit={formik.handleSubmit}>
-            {/* Name Field */}
             <div className="mb-4">
               <label
                 htmlFor="name"
@@ -89,7 +83,6 @@ const SignUpForm: React.FC = () => {
               )}
             </div>
 
-            {/* Email Field */}
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -117,7 +110,6 @@ const SignUpForm: React.FC = () => {
               )}
             </div>
 
-            {/* Password Field */}
             <div className="mb-4 relative">
               <label
                 htmlFor="password"
@@ -157,7 +149,6 @@ const SignUpForm: React.FC = () => {
               )}
             </div>
 
-            {/* Confirm Password Field */}
             <div className="mb-4 relative">
               <label
                 htmlFor="confirmPassword"
@@ -203,7 +194,6 @@ const SignUpForm: React.FC = () => {
                 )}
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
@@ -212,14 +202,12 @@ const SignUpForm: React.FC = () => {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="flex items-center my-4">
             <hr className="flex-grow border-gray-300" />
             <span className="mx-2 text-gray-500">OR</span>
             <hr className="flex-grow border-gray-300" />
           </div>
 
-          {/* Google Sign-In */}
           <button
             type="button"
             className="w-full py-2 px-4 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100"
@@ -233,7 +221,6 @@ const SignUpForm: React.FC = () => {
             <span className="ml-2">Continue with Google</span>
           </button>
 
-          {/* Sign In Link */}
           <p className="text-center text-sm text-gray-600 mt-4">
             Already have an account?{" "}
             <Link href="/signin" className="text-red-500 hover:underline">
