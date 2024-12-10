@@ -9,3 +9,7 @@ export interface SignInFormValues {
   email: string;
   password: string;
 }
+
+export interface ResetPasswordFormValues {
+  email: string;
+}
