@@ -135,7 +135,7 @@ const SignInForm: React.FC = () => {
               </div>
               <Link
                 href="/forgot-password"
-                className="text-sm text-red-500 hover:underline"
+                className="text-sm text-gray-950 hover:underline"
               >
                 Forgot Password?
               </Link>
@@ -170,7 +170,7 @@ const SignInForm: React.FC = () => {
 
           <p className="text-center text-sm text-gray-600 mt-4">
             Don't have an account?{" "}
-            <Link href="/signup" className="text-red-500 hover:underline">
+            <Link href="/signup" className="text-gray-950 hover:underline">
               Sign Up
             </Link>
           </p>
