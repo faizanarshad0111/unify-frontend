@@ -6,18 +6,13 @@ import { z } from "zod";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
-const signinSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-type SigninFormValues = z.infer<typeof signinSchema>;
+import { SignInFormValues } from "@/utils/interface";
+import { signinSchema } from "@/utils/validationSchemas";
 
 const SignInForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const formik = useFormik<SigninFormValues>({
+  const formik = useFormik<SignInFormValues>({
     initialValues: {
       email: "",
       password: "",
