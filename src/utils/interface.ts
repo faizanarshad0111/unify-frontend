@@ -13,3 +13,7 @@ export interface SignInFormValues {
 export interface ResetPasswordFormValues {
   email: string;
 }
+
+export interface VerificationCodeFormValues {
+  code: string[];
+}

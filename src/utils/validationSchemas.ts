@@ -20,3 +20,7 @@ export const signinSchema = z.object({
 export const resetPasswordSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
+
+export const verificationCodeSchema = z.object({
+  code: z.array(z.string().length(1)).length(5),
+});

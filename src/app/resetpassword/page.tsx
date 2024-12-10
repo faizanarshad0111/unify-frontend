@@ -7,8 +7,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { resetPasswordSchema } from "@/utils/validationSchemas";
 import { ResetPasswordFormValues } from "@/utils/interface";
+import { useRouter } from "next/navigation";
 
 const ResetPasswordForm: React.FC = () => {
+  const router = useRouter();
+  const handleNavigation = () => {
+    router.push("/verificationcode");
+  };
+
   const formik = useFormik<ResetPasswordFormValues>({
     initialValues: {
       email: "",
@@ -81,6 +87,7 @@ const ResetPasswordForm: React.FC = () => {
             </div>
 
             <button
+              onClick={handleNavigation}
               type="submit"
               className="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
             >
