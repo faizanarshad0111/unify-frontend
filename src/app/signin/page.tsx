@@ -6,25 +6,27 @@ import { z } from "zod";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { signupSchema } from "@/utils/validationSchemas";
-import { SignUpFormValues } from "@/utils/interface";
 
-const SignUpForm: React.FC = () => {
+const signinSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+type SigninFormValues = z.infer<typeof signinSchema>;
+
+const SignInForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const formik = useFormik<SignUpFormValues>({
+  const formik = useFormik<SigninFormValues>({
     initialValues: {
-      name: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
     validateOnBlur: true,
     validateOnChange: true,
     validate: (values) => {
       try {
-        signupSchema.parse(values);
+        signinSchema.parse(values);
         return {};
       } catch (error) {
         if (error instanceof z.ZodError) {
@@ -52,43 +54,10 @@ const SignUpForm: React.FC = () => {
       </div>
       <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Sign Up
+          Sign In
         </h2>
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
-          {/* Logo */}
-
-          {/* Heading */}
-
-          {/* Form */}
           <form onSubmit={formik.handleSubmit}>
-            {/* Name Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.name}
-                className={`mt-1 p-2 w-full border rounded-md ${
-                  formik.touched.name && formik.errors.name
-                    ? "border-red-500"
-                    : "border-gray-300"
-                }`}
-              />
-              {formik.touched.name && formik.errors.name && (
-                <p className="text-sm text-red-500 mt-1">
-                  {formik.errors.name}
-                </p>
-              )}
-            </div>
-
             {/* Email Field */}
             <div className="mb-4">
               <label
@@ -157,50 +126,27 @@ const SignUpForm: React.FC = () => {
               )}
             </div>
 
-            {/* Confirm Password Field */}
-            <div className="mb-4 relative">
-              <label
-                htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700"
+            {/* Remember Me and Forgot Password */}
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="remember"
+                  className="h-4 w-4 text-red-500 border-gray-300 rounded"
+                />
+                <label
+                  htmlFor="remember"
+                  className="ml-2 text-sm text-gray-600"
+                >
+                  Remember me
+                </label>
+              </div>
+              <Link
+                href="/forgot-password"
+                className="text-sm text-red-500 hover:underline"
               >
-                Confirm Password
-              </label>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.confirmPassword}
-                className={`mt-1 p-2 w-full border rounded-md ${
-                  formik.touched.confirmPassword &&
-                  formik.errors.confirmPassword
-                    ? "border-red-500"
-                    : "border-gray-300"
-                }`}
-              />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute top-2/4 right-3 transform -translate-y-1/10 text-gray-600"
-                aria-label={
-                  showConfirmPassword
-                    ? "Hide confirm password"
-                    : "Show confirm password"
-                }
-              >
-                {showConfirmPassword ? (
-                  <AiOutlineEyeInvisible size={20} />
-                ) : (
-                  <AiOutlineEye size={20} />
-                )}
-              </button>
-              {formik.touched.confirmPassword &&
-                formik.errors.confirmPassword && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {formik.errors.confirmPassword}
-                  </p>
-                )}
+                Forgot Password?
+              </Link>
             </div>
 
             {/* Submit Button */}
@@ -208,7 +154,7 @@ const SignUpForm: React.FC = () => {
               type="submit"
               className="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
             >
-              Sign Up
+              Sign In
             </button>
           </form>
 
@@ -233,11 +179,11 @@ const SignUpForm: React.FC = () => {
             <span className="ml-2">Continue with Google</span>
           </button>
 
-          {/* Sign In Link */}
+          {/* Sign Up Link */}
           <p className="text-center text-sm text-gray-600 mt-4">
-            Already have an account?{" "}
-            <Link href="/signin" className="text-red-500 hover:underline">
-              Sign In
+            Don't have an account?{" "}
+            <Link href="/signup" className="text-red-500 hover:underline">
+              Sign Up
             </Link>
           </p>
         </div>
@@ -246,4 +192,4 @@ const SignUpForm: React.FC = () => {
   );
 };
 
-export default SignUpForm;
+export default SignInForm;
