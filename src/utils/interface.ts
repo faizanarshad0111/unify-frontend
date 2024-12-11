@@ -17,3 +17,8 @@ export interface ResetPasswordFormValues {
 export interface VerificationCodeFormValues {
   code: string[];
 }
+
+export interface ChangePasswordFormValues {
+  newPassword: string;
+  confirmPassword: string;
+}
