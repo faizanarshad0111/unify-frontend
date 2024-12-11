@@ -52,17 +52,17 @@ const SocialProfilePage: React.FC = () => {
                 onClick={() => toggleProfile(profile.name)}
                 className={`w-full sm:w-[210px] h-[60px] sm:h-[72px] rounded-md p-3 sm:p-4 border flex items-center gap-3 transition-all ${
                   selectedProfiles.includes(profile.name)
-                    ? " shadow-lg border-red-500"
+                    ? " shadow-xl"
                     : "border-gray-300"
                 }`}
               >
                 <Image
                   src={profile.icon}
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   alt={profile.name}
                 />
-                <span className="text-sm sm:text-base text-gray-700">
+                <span className="text-lg sm:text-lg text-gray-700 font-bold">
                   {profile.name}
                 </span>
               </button>
